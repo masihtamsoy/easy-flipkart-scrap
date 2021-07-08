@@ -1214,36 +1214,71 @@ html = """
 </div>
 """
 
+from numpy import product
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import pandas as pd
 from bs4 import NavigableString
 import requests
-
-# # Intializing driver
-# driver = webdriver.Chrome(executable_path = './bin/chromedriver 2')
-
-soup = BeautifulSoup(html)
-
-# @Hardcode
-divs = soup.find_all("div", {"class": "_1AtVbE col-12-12"})
+import unicodedata
 
 arr = []
 
+def end_node(tag):
+  # print ("/////////////////", tag)
+  # import pdb;pdb.set_trace()
+  
+  # @TODO How to pass different array flog: personal, seller
+  arr.append(tag.text)
+  return True
 
 
+# # Intializing driver
+driver = webdriver.Chrome(executable_path = './bin/chromedriver 2')
 
+# personalInfoArr = []
+# sellerInfoArr = []
+
+# @Input
+# URL to fetch from Can be looped over / crawled multiple urls
+driver.get('https://www.flipkart.com/robert-t-kiyosaki/p/itmbd830a4a7d9a4?pid=RBKG25UHG45PP9FC&lid=LSTRBKG25UHG45PP9FC00ZQUI&marketplace=FLIPKART&q=rich+dad+poor+dad&store=bks&spotlightTagId=BestsellerId_bks&srno=s_1_1&otracker=AS_Query_HistoryAutoSuggest_1_9_na_na_na&otracker1=AS_Query_HistoryAutoSuggest_1_9_na_na_na&fm=SEARCH&iid=221840b7-cd81-401f-af13-0fd1abcaed92.RBKG25UHG45PP9FC.SEARCH&ppt=sp&ppn=sp&ssid=bfvzvdohkw0000001625588523172&qH=abb2c4a032d5632a')
+
+content = driver.page_source
+soup = BeautifulSoup(content)
+
+# @Hardcode
+# +3
 # divs[0] - name, rating, review, sp, sp, dis
 # divs[4] - seller: name, rating
-topDiv = divs[4]
+divs = soup.find_all("div", {"class": "_1AtVbE col-12-12"})
 
-def end_node(tag):
-    # print ("/////////////////", tag)
-    
-    arr.append(tag.text)
-    return True
+# import pdb;pdb.set_trace()
 
-content = topDiv.find_all(end_node)
+personalSoup = divs[3]
+# sellerSoup = divs[7]
+
+personalSoup.find_all(end_node)
+# sellerSoup.find_all(end_node)
 
 print ("++++++++", arr)
+# arr = ['Robert T Kiyosaki\xa0\xa0(Paperback, Robert T. Kiyosaki)4.4253 Ratings\xa0&\xa039 Reviews₹120₹39969% off', 'Robert T Kiyosaki\xa0\xa0(Paperback, Robert T. Kiyosaki)', 'Robert T Kiyosaki\xa0\xa0(Paperback, Robert T. Kiyosaki)', 'Robert T Kiyosaki\xa0\xa0(Paperback, Robert T. Kiyosaki)', '4.4253 Ratings\xa0&\xa039 Reviews', '4.4253 Ratings\xa0&\xa039 Reviews', '4.4253 Ratings\xa0&\xa039 Reviews', '4.4', '4.4', '', '253 Ratings\xa0&\xa039 Reviews', '253 Ratings\xa0&\xa039 Reviews', '253 Ratings\xa0', '&', '\xa039 Reviews', '₹120₹39969% off', '₹120₹39969% off', '₹120₹39969% off', '₹120', '₹399', '69% off', '69% off', '', '']
+
+def prepare_info(dirtyStr):
+  s = unicodedata.normalize('NFKD', dirtyStr).encode('ascii', 'ignore')
+  return s.decode("utf-8")
+
+
+
+productInfo = {
+  'name': [prepare_info(arr[3])],
+  'rating': [prepare_info(arr[7])],
+  'review': [prepare_info(arr[14])],
+  'sp': [prepare_info(arr[18])],
+  'cp': [prepare_info(arr[19])],
+  'dis': [prepare_info(arr[20])],
+}
+
+df = pd.DataFrame(productInfo)
+df.to_csv('proDetail.csv', index=False, encoding='utf-8')
+
 
