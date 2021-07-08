@@ -106,12 +106,14 @@ driver = webdriver.Chrome(executable_path = './bin/chromedriver 2')
 names = []
 detail_links = []
 
+# @Input
 # URL to fetch from Can be looped over / crawled multiple urls
 driver.get('https://www.flipkart.com/search?q=Cashews&otracker=search&otracker1=search&marketplace=GROCERY&as-show=on&as=off')
 
 content = driver.page_source
 soup = BeautifulSoup(content)
 
+# @Input
 allDiv = soup.select('div[data-id*="NDF"]')
 
 for d in range(len(allDiv)):
@@ -124,7 +126,7 @@ for d in range(len(allDiv)):
   link = allA[1].get('href')
   detail_links.append(link)
 
- 
+
 df = pd.DataFrame({'Product Name':names, 'Link': detail_links})
 df.to_csv('pro.csv', index=False, encoding='utf-8')
 
