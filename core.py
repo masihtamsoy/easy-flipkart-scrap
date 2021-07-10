@@ -57,13 +57,13 @@ detail_links = []
 
 # @Input
 # URL to fetch from Can be looped over / crawled multiple urls
-driver.get('https://www.flipkart.com/search?q=Cashews&otracker=search&otracker1=search&marketplace=GROCERY&as-show=on&as=off')
+driver.get('https://www.flipkart.com/search?q=tea&as=on&as-show=on&otracker=AS_Query_OrganicAutoSuggest_6_3_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_6_3_na_na_na&as-pos=6&as-type=RECENT&suggestionId=tea&requestId=5434bf64-a302-4d6b-a290-6fe47579c5bc&as-searchtext=tea')
 
 content = driver.page_source
 soup = BeautifulSoup(content)
 
 # @Input
-allDiv = soup.select('div[data-id*="NDF"]')
+allDiv = soup.select('div[data-id*="TEA"]')
 
 for d in range(len(allDiv)):
    div = allDiv[d]
@@ -80,6 +80,6 @@ for d in range(len(allDiv)):
    pids += pid
 
 
-df = pd.DataFrame({'pid': pids,'Product Name':names, 'Link': detail_links})
+df = pd.DataFrame({'pid': pids,'name':names, 'link': detail_links})
 df.to_csv('pro.csv', index=False, encoding='utf-8')
 
