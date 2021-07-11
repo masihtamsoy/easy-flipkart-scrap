@@ -153,6 +153,13 @@ from bs4 import NavigableString
 import requests
 import unicodedata
 
+
+
+# Intializing driver
+driver = webdriver.Chrome(executable_path = './bin/chromedriver 2')
+driver.get('http://google.com')
+
+
 pids=[]
 product_detail_links = []
 data = pd.read_csv("./pro.csv")
@@ -186,8 +193,13 @@ for i in range(len(product_detail_links)):
   url = "https://www.flipkart.com" + product_detail_links[i]
   print ("**URL ----> ", url)
 
-  response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
-  soup = BeautifulSoup(response.text, "html.parser")
+  # response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+  driver.execute_script("window.open('about:blank', 'secondtab');")
+  driver.switch_to.window("secondtab")
+  driver.get(url)
+
+  content = driver.page_source
+  soup = BeautifulSoup(content, "html.parser")
 
   # @Hardcode
   # +3
