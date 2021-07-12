@@ -132,6 +132,7 @@ productInfo = {
   'cp': [],
   'dis': [],
   'top_seller': [],
+  'more_seller_link': [],
 }
 
 df = pd.DataFrame(productInfo)
@@ -148,15 +149,18 @@ for i in range(len(product_detail_links)):
    content = driver.page_source
    soup = BeautifulSoup(content, "html.parser")
 
+   more_seller_link = ""
+
    # import pdb;pdb.set_trace()
    try:
       name = soup.find('span', attrs={'class': "B_NuCI"}).text
-      rate_score = soup.find('div', attrs={'class': "_3LWZlK"}).text
-      rating_review = soup.find('span', attrs={'class': "_2_R_DZ"}).text
-      sp = soup.find('div', attrs={'class': "_30jeq3"}).text
-      cp = soup.find('div', attrs={'class': "_3I9_wc"}).text
-      dis = soup.find('div', attrs={'class': "_3Ay6Sb"}).text
-      top_seller = soup.find('div', attrs={'id': "sellerName"}).text
+      rate_score = soup.find('div', attrs={'class': "_3LWZlK"}).text if soup.find('div', attrs={'class': "_3LWZlK"}) else ''
+      rating_review = soup.find('span', attrs={'class': "_2_R_DZ"}).text if soup.find('span', attrs={'class': "_2_R_DZ"}) else ''
+      sp = soup.find('div', attrs={'class': "_30jeq3"}).text if soup.find('div', attrs={'class': "_30jeq3"}) else ''
+      cp = soup.find('div', attrs={'class': "_3I9_wc"}).text if soup.find('div', attrs={'class': "_3I9_wc"}) else ''
+      dis = soup.find('div', attrs={'class': "_3Ay6Sb"}).text if soup.find('div', attrs={'class': "_3Ay6Sb"}) else ''
+      top_seller = soup.find('div', attrs={'id': "sellerName"}).text if soup.find('div', attrs={'id': "sellerName"}) else ''
+      more_seller_link = soup.find('li', attrs={'class': "_38I6QT"}).find('a').get('href') if soup.find('li', attrs={'class': "_38I6QT"}) else ''
 
    except AttributeError:
       print("invalid div class")
@@ -173,7 +177,8 @@ for i in range(len(product_detail_links)):
       prepare_info(sp),
       prepare_info(cp),
       prepare_info(dis),
-      prepare_info(top_seller)
+      prepare_info(top_seller),
+      more_seller_link,
    ]
 
 
