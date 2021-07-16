@@ -181,7 +181,7 @@ driver = webdriver.Chrome(executable_path = './bin/chromedriver 2')
 
 pids=[]
 seller_links = []
-data = pd.read_csv("./proDetail.csv")
+data = pd.read_csv("./unique_pro_details.csv")
 
 for index, row in data.iterrows():
   # row[0] for pid
@@ -238,4 +238,4 @@ for i in range(len(seller_links)):
       ]
   
 
-df.to_csv('seller.csv', index=False, encoding='utf-8')
+df.to_csv('unique_seller.csv', index=False, encoding='utf-8')
