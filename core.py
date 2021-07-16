@@ -55,31 +55,48 @@ pids = []
 names = []
 detail_links = []
 
-# @Input
-# URL to fetch from Can be looped over / crawled multiple urls
-driver.get('https://www.flipkart.com/search?q=tea&as=on&as-show=on&otracker=AS_Query_OrganicAutoSuggest_6_3_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_6_3_na_na_na&as-pos=6&as-type=RECENT&suggestionId=tea&requestId=5434bf64-a302-4d6b-a290-6fe47579c5bc&as-searchtext=tea')
-
-content = driver.page_source
-soup = BeautifulSoup(content)
-
-# @Input
-allDiv = soup.select('div[data-id*="TEA"]')
-
-for d in range(len(allDiv)):
-   div = allDiv[d]
-   allA = div.findAll('a',href=True)
-   
-   # @Hardcode [1]
-   name = allA[1].text
-   names.append(name)
-   link = allA[1].get('href')
-   detail_links.append(link)
-   
-   query = urllib.parse.parse_qs(urllib.parse.urlparse(link).query)
-   pid = query['pid']
-   pids += pid
+urls = []
+# 25 pages for tea
+for i in range(1, 26):
+   url = 'https://www.flipkart.com/search?q=tea&as=on&as-show=on&otracker=AS_Query_OrganicAutoSuggest_6_3_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_6_3_na_na_na&as-pos=6&as-type=RECENT&suggestionId=tea&requestId=5434bf64-a302-4d6b-a290-6fe47579c5bc&as-searchtext=tea&page=' + str(i)
+   urls.append(url)
 
 
-df = pd.DataFrame({'pid': pids,'name':names, 'link': detail_links})
-df.to_csv('pro.csv', index=False, encoding='utf-8')
+# print (urls)
+
+for u in range(len(urls)):
+   # @Input
+   # URL to fetch from Can be looped over / crawled multiple urls
+   # driver.get(urls[u])
+
+   url = urls[u]
+   driver.execute_script("window.open('about:blank', 'secondtab');")
+   driver.switch_to.window("secondtab")
+   driver.get(url)
+
+   content = driver.page_source
+   soup = BeautifulSoup(content)
+
+   # @Input
+   allDiv = soup.select('div[data-id*="TEA"]')
+
+   for d in range(len(allDiv)):
+      div = allDiv[d]
+      allA = div.findAll('a',href=True)
+      
+      # @Hardcode [1]
+      name = allA[1].text
+      names.append(name)
+      link = allA[1].get('href')
+      detail_links.append(link)
+      
+      query = urllib.parse.parse_qs(urllib.parse.urlparse(link).query)
+      pid = query['pid']
+      pids += pid
+
+
+   file_name = 'pro'+ str(u+1) + '.csv'
+   print("file_name", file_name)
+   df = pd.DataFrame({'pid': pids,'name':names, 'link': detail_links})
+   df.to_csv(file_name, index=False, encoding='utf-8')
 
