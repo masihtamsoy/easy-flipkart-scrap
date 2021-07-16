@@ -217,7 +217,6 @@ for i in range(len(seller_links)):
     except TimeoutException:
       print ("Loading took too much time!")
 
-
     deliver = ""
 
     for elem in jsElem:
@@ -233,7 +232,7 @@ for i in range(len(seller_links)):
       
       df.loc[len(df.index)] = [
         pids[i],
-        prepare_info(seller),
+        seller,
         prepare_info(price),
         prepare_info(deliver),
       ]
