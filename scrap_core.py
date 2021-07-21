@@ -30,7 +30,7 @@ class Flipkart:
     return soup
   
   # Use for getting file_names + urls based on pages count
-  def get_value_based_on_pages(self, prefix, suffix):
+  def get_value_based_on_pages(self, prefix="", suffix=""):
     values = []
     pages = self.pages + 1
     for i in range(1, pages):

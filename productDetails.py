@@ -94,6 +94,7 @@ import unicodedata
 from functools import partial
 from scrap_core import Flipkart
 import math
+from products import PAGE_NUM
 
 
 def prepare_info(dirtyStr):
@@ -109,9 +110,8 @@ def my_end_node(arr, tag):
 
 def extract_product_details():
    flipkart = Flipkart()
-   flipkart.set_pages(25)
+   flipkart.set_pages(PAGE_NUM)
    flipkart.driver_initiate()
-
 
    productInfo = {
    'pid': [],
@@ -146,7 +146,8 @@ def extract_product_details():
    chunk = 50
    x = math.ceil(len(data)/chunk)
 
-   for p in range(12, x):
+   # @NOTE: in each iteration chunks size requirest are being made
+   for p in range(0, x):
       start = p*chunk
       end = start + chunk
       if end > len(product_detail_links):
@@ -209,9 +210,10 @@ def extract_product_details():
 
 
 
+# From collected multiple scrapped product details; return unique pids
 def get_unique_pid_mapping():
    flipkart = Flipkart()
-   flipkart.set_pages(14)
+   flipkart.set_pages(PAGE_NUM)
    # put unique data in proUnique.csv
    pids=[]
 
@@ -247,6 +249,7 @@ def get_unique_pid_mapping():
    df.to_csv('unique_pro_details.csv', index=False, encoding='utf-8')
 
 
+# extract_product_details()
 get_unique_pid_mapping()
 
 # [@INFO] Wrong intution, there is inconsistency in order of divs
