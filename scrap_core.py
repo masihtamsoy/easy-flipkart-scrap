@@ -10,7 +10,7 @@ class Flipkart:
     self.base_url = "https://www.flipkart.com"
   
   def set_pages(self, pages):
-    self.pages = pages
+    self.pages = int(pages)
   
   def prepare_info(self, dirtyStr):
     s = unicodedata.normalize('NFKD', dirtyStr).encode('ascii', 'ignore')
