@@ -2,20 +2,24 @@ from scrap_core import Flipkart
 import urllib.parse
 import pandas as pd
 
-PAGE_NUM = 1
+
+PAGE_NUM = input("Enter page number:")
 
 flipkart = Flipkart()
 flipkart.set_pages(PAGE_NUM)
 
 def get_product_listing():
+  # @HARDCODE: for URL mention page in query
+  # https://www.flipkart.com/books/~cs-fw4wq89iws/pr?sid=bks&collection-tab-name=Top+JEE+Exam+Books&hpid=8lrhlQscsveO1YjEVCnSxw%3D%3D&fm=neo%2Fmerchandising&iid=M_90ecb157-3426-4b99-9350-4d9a3ab4ffa3_1.W591WTTZDWNT&ppt=clp&ppn=the-exam-store&ssid=itr2vyi9ecoqz5ds1626841885243&otracker=dynamic_omu_infinite_Exam%2BPreparation%2B_1_1.dealCard.OMU_INFINITE_W591WTTZDWNT&cid=W591WTTZDWNT&page=
+  OPEN_URL = input("Enter URL:")
+  
   # Initialize required list
   pids = []
   names = []
   detail_links = []
 
-  # all links
-  # eg: tea = 'https://www.flipkart.com/search?q=tea&as=on&as-show=on&otracker=AS_Query_OrganicAutoSuggest_6_3_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_6_3_na_na_na&as-pos=6&as-type=RECENT&suggestionId=tea&requestId=5434bf64-a302-4d6b-a290-6fe47579c5bc&as-searchtext=tea&page='
-  urls = flipkart.get_value_based_on_pages('https://www.flipkart.com/books/~cs-lcdw19rpzq/pr?sid=bks&collection-tab-name=Top%20CAT%20Exam%20Books&hpid=F7wt8kV8Sl5d-EbjpHBJZw%3D%3D&fm=neo%2Fmerchandising&iid=M_5aece7ac-1db0-4690-a01c-00bdec21529a_1.O04T6GUM9YFD&ppt=None&ppn=None&ssid=kwewpvarcw0000001626801730121&otracker=dynamic_omu_infinite_Exam%2BPreparation%2B_1_1.dealCard.OMU_INFINITE_O04T6GUM9YFD&cid=O04T6GUM9YFD')
+  # all links: with page query attached
+  urls = flipkart.get_value_based_on_pages(OPEN_URL)
 
   flipkart.driver_initiate()
 
@@ -25,6 +29,7 @@ def get_product_listing():
 
     # @Input
     # allDiv = soup.select('div[data-id*="TEA"]')
+    # @HARDCODE: class name may change
     allDiv = soup.find_all('div', attrs={'class': '_4ddWXP'})
 
     for d in range(len(allDiv)):
