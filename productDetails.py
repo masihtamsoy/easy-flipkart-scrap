@@ -1,89 +1,3 @@
-
-# test html component
-# class="_1AtVbE col-12-12" container holds important data
-html = """
-<div class="_1YokD2 _3Mn1Gg col-8-12" style="padding:0px 0px 0px 24px">
-   </div>
-   <div class="_1AtVbE col-12-12">
-      <div class="aMaAEs">
-         <div>
-            <h1 class="yhB1nd">
-               <span class="B_NuCI">
-                  Robert T Kiyosaki<!-- -->&nbsp;&nbsp;(Paperback, Robert T. Kiyosaki)
-               </span>
-            </h1>
-         </div>
-         <div class="">
-            <div class="_3_L3jD">
-               <div class="gUuXy- _16VRIQ">
-                  <span id="productRating_LSTRBKG25UHG45PP9FC00ZQUI_RBKG25UHG45PP9FC_" class="_1lRcqv">
-                     <div class="_3LWZlK">4.4<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" class="_1wB99o"></div>
-                  </span>
-                  <span class="_2_R_DZ"><span><span>286 Ratings&nbsp;</span><span class="_13vcmD">&amp;</span><span>&nbsp;44 Reviews</span></span></span>
-               </div>
-            </div>
-         </div>
-         <div class="dyC4hf">
-            <div class="CEmiEU">
-               <div class="_25b18c">
-                  <div class="_30jeq3 _16Jk6d">₹120</div>
-                  <div class="_3I9_wc _2p6lqe">
-                     ₹<!-- -->399
-                  </div>
-                  <div class="_3Ay6Sb _31Dcoz"><span>69% off</span></div>
-               </div>
-            </div>
-            <div class="_1V9q7_"><img class="_3ECE0V" src="//static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/info-basic_6c1a38.svg" id="price-info-icon"></div>
-         </div>
-      </div>
-   </div>
-   <div class="_1AtVbE col-12-12">
-      <div class="_3Z0lU8">
-         <div class="rd9nIL">Available offers</div>
-      </div>
-      <div class="_3TT44I">
-         <div class="WT_FyS">
-            <div class="XUp0WS">
-               <span class="_3j4Zjq row">
-                  <img src="https://rukminim1.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" class="_3HLfAg">
-                  <li class="_16eBzU col">
-                     <span class="u8dYXW">Bank Offer</span><span>5% Unlimited Cashback on Flipkart Axis Bank Credit Card</span>
-                     <div class="Bv11UC _1qNw3R"><span class="fGhUR2">T&amp;C</span></div>
-                  </li>
-               </span>
-               <span class="_3j4Zjq row">
-                  <img src="https://rukminim1.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" class="_3HLfAg">
-                  <li class="_16eBzU col">
-                     <span class="u8dYXW">Bank Offer</span><span>20% off on 1st txn with Amex Network Cards issued by ICICI Bank,IndusInd Bank,SBI Cards and Mobikwik</span>
-                     <div class="Bv11UC _1qNw3R"><span class="fGhUR2">T&amp;C</span></div>
-                  </li>
-               </span>
-               <span class="_3j4Zjq row">
-                  <img src="https://rukminim1.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" class="_3HLfAg">
-                  <li class="_16eBzU col">
-                     <span class="u8dYXW">Bank Offer</span><span>10% Off on Bank of Baroda Mastercard debit card first time transaction, Terms and Condition apply</span>
-                     <div class="Bv11UC _1qNw3R"><span class="fGhUR2">T&amp;C</span></div>
-                  </li>
-               </span>
-               <span class="_3j4Zjq row">
-                  <img src="https://rukminim1.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" class="_3HLfAg">
-                  <li class="_16eBzU col">
-                     <span class="u8dYXW">Bank Offer</span><span>10% Off on First time ICICI Mastercard Credit Card transaction, Terms and Condition apply</span>
-                     <div class="Bv11UC _1qNw3R"><span class="fGhUR2">T&amp;C</span></div>
-                  </li>
-               </span>
-            </div>
-            <button class="_1JIkBw">
-               <div class="row">
-                  <div class="IMZJg1"><span>View 2 more offers</span></div>
-               </div>
-            </button>
-         </div>
-      </div>
-   </div>
-</div>
-"""
-
 import sys
 from os import access
 from selenium import webdriver
@@ -96,6 +10,23 @@ from scrap_core import Flipkart
 import math
 from products import PAGE_NUM
 
+
+PRODUCT_INFO = {
+   'pid': [],
+   'name': [],
+   'rate_score': [],
+   'rating_review': [],
+   'sp': [],
+   'cp': [],
+   'dis': [],
+   'wt_label': [],
+   'qty': [],
+   'highlight': [],
+   'inventory_alert': [],
+   'stock_alert': [],
+   'top_seller': [],
+   'more_seller_link': [],
+   }
 
 def prepare_info(dirtyStr):
   s = unicodedata.normalize('NFKD', dirtyStr).encode('ascii', 'ignore')
@@ -113,22 +44,7 @@ def extract_product_details():
    flipkart.set_pages(PAGE_NUM)
    flipkart.driver_initiate()
 
-   productInfo = {
-   'pid': [],
-   'name': [],
-   'rate_score': [],
-   'rating_review': [],
-   'sp': [],
-   'cp': [],
-   'dis': [],
-   'wt_label': [],
-   'qty': [],
-   'highlight': [],
-   'top_seller': [],
-   'more_seller_link': [],
-   }
-
-   df = pd.DataFrame(productInfo)
+   df = pd.DataFrame(PRODUCT_INFO)
 
    pids = []
    product_detail_links = []
@@ -166,11 +82,13 @@ def extract_product_details():
          qty = []
          highlight = []
          wt_label = []
+         stock_alert = ""
+         inventory_alert = ""
 
          # import pdb;pdb.set_trace()
 
          try:
-            
+            # @HARDCODE: List of all hardcode attrs
             name = soup.find('span', attrs={'class': "B_NuCI"}).text
             rate_score = soup.find('div', attrs={'class': "_3LWZlK"}).text if soup.find('div', attrs={'class': "_3LWZlK"}) else ''
             rating_review = soup.find('span', attrs={'class': "_2_R_DZ"}).text if soup.find('span', attrs={'class': "_2_R_DZ"}) else ''
@@ -182,7 +100,9 @@ def extract_product_details():
             highlight = [ x.text for x in soup.find('ul', attrs={'class': "_2418kt"}).findAll('li') ] if soup.find('ul', attrs={'class': "_2418kt"}) else ''
             top_seller = soup.find('div', attrs={'id': "sellerName"}).text if soup.find('div', attrs={'id': "sellerName"}) else ''
             more_seller_link = soup.find('li', attrs={'class': "_38I6QT"}).find('a').get('href') if soup.find('li', attrs={'class': "_38I6QT"}) else ''
-
+            stock_alert = soup.find('div', attrs={'class': "_16FRp0"}).text if soup.find('div', attrs={'class': "_16FRp0"}) else ''
+            inventory_alert = soup.find('div', attrs={'class': "_2JC05C"}).text if soup.find('div', attrs={'class': "_2JC05C"}) else ''
+            
          except AttributeError:
             print("invalid div class")
             pass
@@ -201,6 +121,8 @@ def extract_product_details():
             wt_label,
             qty,
             highlight,
+            inventory_alert,
+            stock_alert,
             prepare_info(top_seller),
             more_seller_link,
          ]
@@ -217,22 +139,7 @@ def get_unique_pid_mapping():
    # put unique data in proUnique.csv
    pids=[]
 
-   productInfo = {
-   'pid': [],
-   'name': [],
-   'rate_score': [],
-   'rating_review': [],
-   'sp': [],
-   'cp': [],
-   'dis': [],
-   'wt_label': [],
-   'qty': [],
-   'highlight': [],
-   'top_seller': [],
-   'more_seller_link': [],
-   }
-
-   df = pd.DataFrame(productInfo)
+   df = pd.DataFrame(PRODUCT_INFO)
 
    file_names = flipkart.get_value_based_on_pages('proDetail', ".csv")
 
@@ -249,8 +156,8 @@ def get_unique_pid_mapping():
    df.to_csv('unique_pro_details.csv', index=False, encoding='utf-8')
 
 
-# extract_product_details()
-get_unique_pid_mapping()
+extract_product_details()
+# get_unique_pid_mapping()
 
 # [@INFO] Wrong intution, there is inconsistency in order of divs
 # For different product divs[3] is not same
