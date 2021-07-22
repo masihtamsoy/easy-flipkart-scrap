@@ -8,7 +8,6 @@ import unicodedata
 from functools import partial
 from scrap_core import Flipkart
 import math
-from products import PAGE_NUM
 
 
 PRODUCT_INFO = {
@@ -41,14 +40,12 @@ def my_end_node(arr, tag):
 
 def extract_product_details():
    flipkart = Flipkart()
-   flipkart.set_pages(PAGE_NUM)
    flipkart.driver_initiate()
-
-   df = pd.DataFrame(PRODUCT_INFO)
 
    pids = []
    product_detail_links = []
 
+   df = pd.DataFrame(PRODUCT_INFO)
    data = pd.read_csv('unique_pro.csv')
 
    for index, row in data.iterrows():
@@ -135,7 +132,9 @@ def extract_product_details():
 # From collected multiple scrapped product details; return unique pids
 def get_unique_pid_mapping():
    flipkart = Flipkart()
+   PAGE_NUM = input("Enter count of files (proDetail1, proDetail2...) generated:")
    flipkart.set_pages(PAGE_NUM)
+
    # put unique data in proUnique.csv
    pids=[]
 
@@ -157,21 +156,4 @@ def get_unique_pid_mapping():
 
 
 extract_product_details()
-# get_unique_pid_mapping()
-
-# [@INFO] Wrong intution, there is inconsistency in order of divs
-# For different product divs[3] is not same
-# # @Hardcode
-# # divs[3] - name, rating, review, sp, sp, dis
-# # divs[7] - seller: name, rating
-# divs = soup.find_all("div", {"class": "_1AtVbE col-12-12"})
-# # print ("**PARENT DIVS ----> ", divs)
-
-# for d in range(8):
-# if (d in [3, 7]):
-#    myArr = []
-#    end_node = partial(my_end_node, myArr)
-#    divs[d].find_all(end_node)
-
-#    print ("myArr===>", pids[i], myArr)
-#    df.loc[len(df.index)] = [pids[i], myArr]
+get_unique_pid_mapping()
