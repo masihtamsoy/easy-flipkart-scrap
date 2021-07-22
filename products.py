@@ -3,16 +3,15 @@ import urllib.parse
 import pandas as pd
 
 
-PAGE_NUM = input("Enter page number:")
-
-flipkart = Flipkart()
-flipkart.set_pages(PAGE_NUM)
-
 def get_product_listing():
+  flipkart = Flipkart()
+  PAGE_NUM = input("Enter page number:")
+  flipkart.set_pages(PAGE_NUM)
+
   # @HARDCODE: for URL mention page in query
   # https://www.flipkart.com/books/~cs-fw4wq89iws/pr?sid=bks&collection-tab-name=Top+JEE+Exam+Books&hpid=8lrhlQscsveO1YjEVCnSxw%3D%3D&fm=neo%2Fmerchandising&iid=M_90ecb157-3426-4b99-9350-4d9a3ab4ffa3_1.W591WTTZDWNT&ppt=clp&ppn=the-exam-store&ssid=itr2vyi9ecoqz5ds1626841885243&otracker=dynamic_omu_infinite_Exam%2BPreparation%2B_1_1.dealCard.OMU_INFINITE_W591WTTZDWNT&cid=W591WTTZDWNT&page=
   OPEN_URL = input("Enter URL:")
-  
+
   # Initialize required list
   pids = []
   names = []
@@ -54,6 +53,9 @@ def get_product_listing():
 
 # based on all the scraped .csv files; filter out unique pids
 def get_unique_pid_mapping():
+  flipkart = Flipkart()
+  PAGE_NUM = input("Enter count of files (pro1, pro2...) generated:")
+  flipkart.set_pages(PAGE_NUM)
   # put unique data in proUnique.csv
   pids=[]
   product_detail_links = []
