@@ -1,8 +1,14 @@
 from selenium import webdriver
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
 from bs4 import BeautifulSoup
 import pandas as pd
 import urllib.parse
 import unicodedata
+
 
 
 class Flipkart:
@@ -29,6 +35,15 @@ class Flipkart:
     soup = BeautifulSoup(content, "html.parser")
     return soup
   
+  def driver_js_elem(self, attr = {'class': "_2Y3EWJ"}):
+    try:
+      jsElem = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME , attr['class'])))
+      print ("Page is ready!")
+    except TimeoutException:
+      print ("Loading took too much time!")
+    
+    return jsElem
+
   # Use for getting file_names + urls based on pages count
   def get_value_based_on_pages(self, prefix="", suffix=""):
     values = []
@@ -37,3 +52,17 @@ class Flipkart:
       file_name = prefix + str(i) + suffix
       values.append(file_name)
     return values
+
+  def get_values_from_file(self, file_name):
+    pids = []
+    links = []
+
+    data = pd.read_csv(file_name)
+    for index, row in data.iterrows():
+      # row[0] for pid
+      # row[2] for link
+      if row['pid'] not in pids:
+        pids.append(row['pid'])
+        links.append(row['link'])
+    
+    return [pids, links]
