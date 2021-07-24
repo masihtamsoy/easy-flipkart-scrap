@@ -1,154 +1,3 @@
-html = """
-<div class="_1XrEZh">
-  <div class="_2Y3EWJ">
-    <div class="isp3v_ col-3-12">
-      <div class="_3enH42"><span>NathuStore</span></div>
-      <div class="_3LWZlK _2GCNvL">3.9<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" class="_1wB99o"></div>
-      <div class="tYUt05">
-        <div class="_2VjKcd"><span>Cash On Delivery available</span></div>
-        <div class="_2VjKcd"><span>7 Days Replacement Policy</span></div>
-      </div>
-    </div>
-    <div class="_1GFtIv col-3-12">
-      <div class="_3J2v2E">
-        <div class="_dqAAI">
-          <div class="_25b18c">
-            <div class="_30jeq3">₹150</div>
-            <div class="_3I9_wc">₹499</div>
-            <div class="_3Ay6Sb"><span>69% off</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="_1R3l1c">
-        <div class="_n_3cy">5% Unlimited Cashback on Flipkart Axis Bank Credit Card</div>
-        <div class="_n_3cy">20% off on 1st txn with Amex Network Cards issued by ICICI Bank,IndusInd Bank,SBI Cards and Mobikwik</div>
-        <div>
-          <div class="_3RifV2"><span>4 more offers</span></div>
-          <div class="_2U3Utu">
-            <div class="_n_3cy">10% Off on Bank of Baroda Mastercard debit card first time transaction, Terms and Condition apply</div>
-            <div class="_n_3cy">10% Off on First time ICICI Mastercard Credit Card transaction, Terms and Condition apply</div>
-            <div class="_n_3cy">5% Off on first time SBI Mastercard Debit Card transactions,Terms and Condition apply.</div>
-            <div class="_n_3cy">Flat ₹100 off on first Flipkart Pay Later order of ₹500 and above</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="_2dC_B5 col-2-12">
-      <div class="_1OUluu">
-        <ul class="eWlq4L _3C3-mf">
-          <li class="_1P1cwQ _2AJabZ">
-            <div class="_3XINqE">Delivery by 15 Jul, Thursday (₹10)</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="_1H0mL_ col-4-12">
-      <div class="QGNmKY col-6-12">
-        <button class="_2KpZ6l _2U9uOA _3v1-ww">
-          <svg class="_1KOMV2" width="16" height="16" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg">
-            <path class="" d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86" fill="#fff"></path>
-          </svg>
-          ADD TO CART
-        </button>
-      </div>
-      <div class="_1vz1WT col-6-12">
-        <form><button class="_2KpZ6l _2U9uOA ihZ75k _3AWRsL" type="button"><span class="_3iRXzi"></span> BUY NOW</button></form>
-      </div>
-    </div>
-  </div>
-  <div class="_2Y3EWJ">
-    <div class="isp3v_ col-3-12">
-      <div class="_3enH42"><span>VenteZone</span></div>
-      <div class="_3LWZlK _2GCNvL">3.8<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" class="_1wB99o"></div>
-      <div class="tYUt05">
-        <div class="_2VjKcd"><span>Cash On Delivery available</span></div>
-        <div class="_2VjKcd"><span>7 Days Replacement Policy</span></div>
-      </div>
-    </div>
-    <div class="_1GFtIv col-3-12">
-      <div class="_3J2v2E">
-        <div class="_dqAAI">
-          <div class="_25b18c">
-            <div class="_30jeq3">₹164</div>
-            <div class="_3I9_wc">₹599</div>
-            <div class="_3Ay6Sb"><span>72% off</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="_1R3l1c">
-        <div class="_n_3cy">5% Unlimited Cashback on Flipkart Axis Bank Credit Card</div>
-        <div class="_n_3cy">20% off on 1st txn with Amex Network Cards issued by ICICI Bank,IndusInd Bank,SBI Cards and Mobikwik</div>
-        <div>
-          <div class="_3RifV2"><span>4 more offers</span></div>
-          <div class="_2U3Utu">
-            <div class="_n_3cy">10% Off on Bank of Baroda Mastercard debit card first time transaction, Terms and Condition apply</div>
-            <div class="_n_3cy">10% Off on First time ICICI Mastercard Credit Card transaction, Terms and Condition apply</div>
-            <div class="_n_3cy">5% Off on first time SBI Mastercard Debit Card transactions,Terms and Condition apply.</div>
-            <div class="_n_3cy">Flat ₹100 off on first Flipkart Pay Later order of ₹500 and above</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="_2dC_B5 col-2-12">
-      <div class="_1OUluu">
-        <ul class="eWlq4L _3C3-mf">
-          <li class="_1P1cwQ _2AJabZ">
-            <div class="_3XINqE">Delivery by 15 Jul, Thursday (₹10)</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="_1H0mL_ col-4-12">
-      <div class="QGNmKY col-6-12">
-        <button class="_2KpZ6l _2U9uOA _3v1-ww">
-          <svg class="_1KOMV2" width="16" height="16" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg">
-            <path class="" d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86" fill="#fff"></path>
-          </svg>
-          ADD TO CART
-        </button>
-      </div>
-      <div class="_1vz1WT col-6-12">
-        <form><button class="_2KpZ6l _2U9uOA ihZ75k _3AWRsL" type="button"><span class="_3iRXzi"></span> BUY NOW</button></form>
-      </div>
-    </div>
-  </div>
-  <div class="_2Y3EWJ">
-    <div class="isp3v_ col-3-12">
-      <div class="_3enH42"><span>Suhani Garment</span></div>
-      <div class="_3LWZlK _2GCNvL">3.5<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" class="_1wB99o"></div>
-      <div class="tYUt05">
-        <div class="_2VjKcd"><span>Cash On Delivery available</span></div>
-        <div class="_2VjKcd"><span>7 Days Replacement Policy</span></div>
-      </div>
-    </div>
-    <div class="_1GFtIv col-3-12">
-      <div class="_3J2v2E">
-        <div class="_dqAAI">
-          <div class="_25b18c">
-            <div class="_30jeq3">₹155</div>
-            <div class="_3I9_wc">₹499</div>
-            <div class="_3Ay6Sb"><span>68% off</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="_1R3l1c">
-        <div class="_n_3cy">5% Unlimited Cashback on Flipkart Axis Bank Credit Card</div>
-        <div class="_n_3cy">20% off on 1st txn with Amex Network Cards issued by ICICI Bank,IndusInd Bank,SBI Cards and Mobikwik</div>
-        <div>
-          <div class="_3RifV2"><span>4 more offers</span></div>
-          <div class="_2U3Utu">
-            <div class="_n_3cy">10% Off on Bank of Baroda Mastercard debit card first time transaction, Terms and Condition apply</div>
-            <div class="_n_3cy">10% Off on First time ICICI Mastercard Credit Card transaction, Terms and Condition apply</div>
-            <div class="_n_3cy">5% Off on first time SBI Mastercard Debit Card transactions,Terms and Condition apply.</div>
-            <div class="_n_3cy">Flat ₹100 off on first Flipkart Pay Later order of ₹500 and above</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-"""
-
 from bs4 import BeautifulSoup
 import pandas as pd
 import unicodedata
@@ -161,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+from scrap_core import Flipkart
 
 
 
@@ -176,66 +26,171 @@ def my_end_node(arr, tag):
    return True
 
 
-# Intializing driver
-driver = webdriver.Chrome(executable_path = './bin/chromedriver 2')
 
-pids=[]
-seller_links = []
-data = pd.read_csv("./unique_pro_details.csv")
-
-for index, row in data.iterrows():
-  # row[0] for pid
-  # row[2] for link
-  pids.append(row['pid'])
-  seller_links.append(row['more_seller_link'])
-
-# print (seller_links)
-
-productInfo = {
+SELLER_INFO = {
   'pid': [],
   'seller': [],
-  'price': [],
+  'sp': [],
+  'cp': [],
+  'dis': [],
   'deliver': []
 }
 
-df = pd.DataFrame(productInfo)
-
-for i in range(len(seller_links)):
-  if type(seller_links[i]) == str:
-    url = "https://www.flipkart.com" + seller_links[i]
-    print ("**URL ----> ", url)
-
-    # page = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
-    # soup = BeautifulSoup(page.text, 'html.parser')
-    driver.execute_script("window.open('about:blank', 'secondtab');")
-    driver.switch_to.window("secondtab")
-    driver.get(url)
-    
-    try:
-      jsElem = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME , "_2Y3EWJ")))
-      print ("Page is ready!")
-    except TimeoutException:
-      print ("Loading took too much time!")
-
-    deliver = ""
-
-    for elem in jsElem:
-      try:
-        seller = elem.find_element_by_class_name('isp3v_').text
-        price = elem.find_element_by_class_name('_3J2v2E').text
-        deliver = elem.find_element_by_class_name('_3XINqE').text
-
-      except:
-        pass
-
-      # print (pids[i], prepare_info(seller), prepare_info(price), deliver)
-      
-      df.loc[len(df.index)] = [
-        pids[i],
-        seller,
-        prepare_info(price),
-        prepare_info(deliver),
-      ]
+def extract_seller_new():
   
+  MODE='seller'
+  #hello
+  flipkart = Flipkart(MODE)
+  flipkart.driver_initiate()
 
-df.to_csv('unique_seller.csv', index=False, encoding='utf-8')
+  result = flipkart.get_unique_values_from_file()
+  chunks_range = flipkart.segregate_data_into_chunks()
+
+  print (chunks_range)
+  # print (result)
+  pids = result[0]
+  links = result[1]
+
+  for p in range(1, len(chunks_range)):
+    start = chunks_range[p][0]
+    end = chunks_range[p][1]
+    
+    df = pd.DataFrame(SELLER_INFO)
+    for i in range(start, end):
+      if type(links[i]) == str:
+        url = "https://www.flipkart.com" + links[i]
+        print ("**URL ----> ", url)
+
+        soup = flipkart.driver_page_soup(url)
+        jsElem = flipkart.driver_js_elem()
+
+        deliver = ""
+        sp = ""
+        cp = ""
+        dis = ""
+
+        for elem in jsElem:
+          try:
+            seller = elem.find_element_by_class_name('isp3v_').text
+            # @TODO: change logic
+            sp = elem.find_element_by_class_name('_30jeq3').text if elem.find_element_by_class_name('_30jeq3') else ''
+            cp = elem.find_element_by_class_name('_3I9_wc').text if elem.find_element_by_class_name('_3I9_wc') else ''
+            dis = elem.find_element_by_class_name('_3Ay6Sb').text if elem.find_element_by_class_name('_3Ay6Sb') else ''
+            deliver = elem.find_element_by_class_name('_3XINqE').text if elem.find_element_by_class_name('_3XINqE') else ''
+
+          except:
+            pass
+
+          # print (pids[i], prepare_info(seller), prepare_info(price), deliver)
+          
+          df.loc[len(df.index)] = [
+            pids[i],
+            seller,
+            flipkart.prepare_info(sp),
+            flipkart.prepare_info(cp),
+            flipkart.prepare_info(dis),
+            flipkart.prepare_info(deliver),
+          ]
+
+    file_name = 'seller' + str(p+1) + '.csv'
+    df.to_csv(file_name, index=False, encoding='utf-8')
+      
+
+
+
+
+def extract_seller():
+
+  # Intializing driver
+  driver = webdriver.Chrome(executable_path = './bin/chromedriver 2')
+
+  pids=[]
+  seller_links = []
+  data = pd.read_csv("./unique_pro_details.csv")
+
+  for index, row in data.iterrows():
+    # row[0] for pid
+    # row[2] for link
+    pids.append(row['pid'])
+    seller_links.append(row['more_seller_link'])
+
+  # print (seller_links)
+
+  productInfo = {
+    'pid': [],
+    'seller': [],
+    'sp': [],
+    'cp': [],
+    'dis': [],
+    'deliver': []
+  }
+
+  df = pd.DataFrame(productInfo)
+
+  for i in range(len(seller_links)):
+    if type(seller_links[i]) == str:
+      url = "https://www.flipkart.com" + seller_links[i]
+      print ("**URL ----> ", url)
+
+      # page = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+      # soup = BeautifulSoup(page.text, 'html.parser')
+      driver.execute_script("window.open('about:blank', 'secondtab');")
+      driver.switch_to.window("secondtab")
+      driver.get(url)
+      
+      try:
+        jsElem = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME , "_2Y3EWJ")))
+        print ("Page is ready!")
+      except TimeoutException:
+        print ("Loading took too much time!")
+
+      deliver = ""
+      sp = ""
+      cp = ""
+      dis = ""
+      # import pdb;pdb.set_trace()
+      for elem in jsElem:
+        try:
+          seller = elem.find_element_by_class_name('isp3v_').text
+          # @TODO: change logic
+          sp = elem.find_element_by_class_name('_30jeq3').text if elem.find_element_by_class_name('_30jeq3') else ''
+          cp = elem.find_element_by_class_name('_3I9_wc').text if elem.find_element_by_class_name('_3I9_wc') else ''
+          dis = elem.find_element_by_class_name('_3Ay6Sb').text if elem.find_element_by_class_name('_3Ay6Sb') else ''
+          deliver = elem.find_element_by_class_name('_3XINqE').text if elem.find_element_by_class_name('_3XINqE') else ''
+
+        except:
+          pass
+
+        # print (pids[i], prepare_info(seller), prepare_info(price), deliver)
+        
+        df.loc[len(df.index)] = [
+          pids[i],
+          seller,
+          prepare_info(sp),
+          prepare_info(cp),
+          prepare_info(dis),
+          prepare_info(deliver),
+        ]
+    
+
+  df.to_csv('unique_seller.csv', index=False, encoding='utf-8')
+
+
+def data_sanetize():
+  data = pd.read_csv("./unique_seller.csv")
+  for index, row in data.iterrows():
+    price = row['price'].split("%")[0]
+  
+  # prices = [row['price'].split("%")[0] for index, row in data.iterrows()]
+
+  # d = [0]*20
+  # for price in prices:
+  #   print (price)
+  #   d[len(price)] += 1
+  
+  # print (d)
+  # import pdb;pdb.set_trace()
+  # # for index, row in data.iterrows():
+
+# data_sanetize()
+extract_seller_new()
