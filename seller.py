@@ -46,6 +46,7 @@ def extract_seller():
 
         for elem in jsElem:
           try:
+            # @HARDCODE
             seller = elem.find_element_by_class_name('isp3v_').text
             sp = elem.find_element_by_class_name('_30jeq3').text if elem.find_element_by_class_name('_30jeq3') else ''
             cp = elem.find_element_by_class_name('_3I9_wc').text if elem.find_element_by_class_name('_3I9_wc') else ''

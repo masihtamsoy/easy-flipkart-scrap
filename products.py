@@ -31,9 +31,8 @@ def get_product_listing():
     url = urls[u]
     soup = flipkart.driver_page_soup(url)
 
-    # @Input
-    # allDiv = soup.select('div[data-id*="TEA"]')
-    # @HARDCODE: class name may change
+    # @HARDCODE: class is a component containing whole of product info;
+    # clicking on this class will redirect you to product details page
     allDiv = soup.find_all('div', attrs={'class': '_4ddWXP'})
 
     for d in range(len(allDiv)):
