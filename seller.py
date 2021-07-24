@@ -26,7 +26,7 @@ def extract_seller_new():
   pids = result[0]
   links = result[1]
 
-  for p in range(1, 2):
+  for p in range(0, len(chunks_range)):
     start = chunks_range[p][0]
     end = chunks_range[p][1]
     
