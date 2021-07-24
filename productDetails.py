@@ -27,48 +27,28 @@ PRODUCT_INFO = {
    'more_seller_link': [],
    }
 
-def prepare_info(dirtyStr):
-  s = unicodedata.normalize('NFKD', dirtyStr).encode('ascii', 'ignore')
-  return s.decode("utf-8")
-
-
-def my_end_node(arr, tag):
-   # print ("/////////////////", tag)   
-   # @TODO How to pass different array flog: personal, seller
-   arr.append(prepare_info(tag.text))
-   return True
 
 def extract_product_details():
-   flipkart = Flipkart()
+   MODE='pd'
+   #hello
+   flipkart = Flipkart(MODE)
    flipkart.driver_initiate()
 
-   pids = []
-   product_detail_links = []
+   result = flipkart.get_unique_values_from_file()
+   chunks_range = flipkart.segregate_data_into_chunks()
 
-   df = pd.DataFrame(PRODUCT_INFO)
-   data = pd.read_csv('unique_pro.csv')
+   print (chunks_range)
+   # print (result)
+   pids = result[0]
+   links = result[1]
 
-   for index, row in data.iterrows():
-      # row[0] for pid
-      # row[2] for link
-      if row['pid'] not in pids:
-         pids.append(row['pid'])
-         product_detail_links.append(row['link'])
-
-   # import pdb;pdb.set_trace()
-   chunk = 50
-   x = math.ceil(len(data)/chunk)
-
-   # @NOTE: in each iteration chunks size requirest are being made
-   for p in range(0, x):
-      start = p*chunk
-      end = start + chunk
-      if end > len(product_detail_links):
-         end = len(product_detail_links)
+   for p in range(3, len(chunks_range)):
+      start = chunks_range[p][0]
+      end = chunks_range[p][1]
       
-      print ("start end", start, end)
+      df = pd.DataFrame(PRODUCT_INFO)
       for i in range(start, end):
-         url = "https://www.flipkart.com" + product_detail_links[i]
+         url = flipkart.base_url + links[i]
          # test url
          # url = "https://www.flipkart.com/octavius-premium-assam-kadak-ctc-chai-tea-pouch/p/itmfeswawz4byagf?pid=TEAFERZCFGGT2PNH&lid=LSTTEAFERZCFGGT2PNHXK10XB&marketplace=FLIPKART&q=tea&store=eat%2Ffpm&srno=s_7_255&otracker=AS_Query_OrganicAutoSuggest_6_3_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_6_3_na_na_na&fm=organic&iid=1722fccc-4461-4e9b-afb9-f8bf01b2935c.TEAFERZCFGGT2PNH.SEARCH&ppt=sp&ppn=sp&ssid=r8ukfaozcw0000001626416478633&qH=7239ea2b5dc943f6"
          print ("**URL ----> ", url)
@@ -81,8 +61,6 @@ def extract_product_details():
          wt_label = []
          stock_alert = ""
          inventory_alert = ""
-
-         # import pdb;pdb.set_trace()
 
          try:
             # @HARDCODE: List of all hardcode attrs
@@ -109,18 +87,18 @@ def extract_product_details():
 
          df.loc[len(df.index)] = [
             pids[i],
-            prepare_info(name),
-            prepare_info(rate_score),
-            prepare_info(rating_review),
-            prepare_info(sp),
-            prepare_info(cp),
-            prepare_info(dis),
+            flipkart.prepare_info(name),
+            flipkart.prepare_info(rate_score),
+            flipkart.prepare_info(rating_review),
+            flipkart.prepare_info(sp),
+            flipkart.prepare_info(cp),
+            flipkart.prepare_info(dis),
             wt_label,
             qty,
             highlight,
             inventory_alert,
             stock_alert,
-            prepare_info(top_seller),
+            flipkart.prepare_info(top_seller),
             more_seller_link,
          ]
       
@@ -129,31 +107,9 @@ def extract_product_details():
 
 
 
-# From collected multiple scrapped product details; return unique pids
 def get_unique_pid_mapping():
-   flipkart = Flipkart()
-   PAGE_NUM = input("Enter count of files (proDetail1, proDetail2...) generated:")
-   flipkart.set_pages(PAGE_NUM)
-
-   # put unique data in proUnique.csv
-   pids=[]
-
-   df = pd.DataFrame(PRODUCT_INFO)
-
-   file_names = flipkart.get_value_based_on_pages('proDetail', ".csv")
-
-   for file_name in file_names:
-      data = pd.read_csv(file_name)
-
-      for index, row in data.iterrows():
-         # row[0] for pid
-         # row[2] for link
-         if row['pid'] not in pids:
-            pids.append(row['pid'])
-            df.loc[len(df.index)] = row
-
-   df.to_csv('unique_pro_details.csv', index=False, encoding='utf-8')
-
+   flipkart = Flipkart("pd")
+   flipkart.merge_multiple_sources_into_master(PRODUCT_INFO)
 
 extract_product_details()
 get_unique_pid_mapping()
