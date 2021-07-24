@@ -11,7 +11,7 @@ SELLER_INFO = {
   'deliver': []
 }
 
-def extract_seller_new():
+def extract_seller():
   
   MODE='seller'
   #hello
@@ -75,6 +75,5 @@ def get_unique():
   flipkart.merge_multiple_sources_into_master(SELLER_INFO)
 
 
-# data_sanetize()
-# extract_seller_new()
+extract_seller()
 get_unique()
