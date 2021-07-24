@@ -6,7 +6,7 @@
 - Create virtual environment, and activate it
 - pip install -r requirement.txt
 
-Inorder to scrap sequentially follow the step,
+Inorder to scrap; sequentially follow the step,
 
 1. collect all the `products listing`
   
@@ -20,6 +20,8 @@ Inorder to scrap sequentially follow the step,
 
   `python seller.py`
 
+
+OUTPUT: after running sequentially above steps desired files to expect are : unique_pro.csv, unique_pro_details.csv, unique_seller.csv
 
 All the functions within the steps are mentioned below, in order to run just one function comment other function :P
 
