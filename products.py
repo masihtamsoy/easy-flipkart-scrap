@@ -2,6 +2,11 @@ from scrap_core import Flipkart
 import urllib.parse
 import pandas as pd
 
+PRO_INFO = {
+  'pid': [],
+  'name': [],
+  'link': [],
+}
 
 def get_product_listing():
   flipkart = Flipkart()
@@ -82,5 +87,6 @@ def get_unique_pid_mapping():
 
   df.to_csv('unique_pro.csv', index=False, encoding='utf-8')
   
-# get_product_listing()
+
+get_product_listing()
 get_unique_pid_mapping()

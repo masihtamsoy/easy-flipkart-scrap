@@ -42,7 +42,7 @@ def extract_product_details():
    pids = result[0]
    links = result[1]
 
-   for p in range(3, len(chunks_range)):
+   for p in range(0, len(chunks_range)):
       start = chunks_range[p][0]
       end = chunks_range[p][1]
       

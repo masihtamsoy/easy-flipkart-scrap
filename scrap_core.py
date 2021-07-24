@@ -14,7 +14,7 @@ import math
 # import pdb;pdb.set_trace()
 
 class Flipkart:
-  def __init__(self, mode='pro_detail'):
+  def __init__(self, mode='pd'):
     self.base_url = "https://www.flipkart.com"
     self.mode = mode
     self.unique_data_size = 0
@@ -64,10 +64,11 @@ class Flipkart:
   def get_unique_values_from_file(self):
     key1 = 'pid'
     key2 = ''
+    
+    # @NOTE: file_name is dependency unique file
     file_name = ''
 
-    # @NOTE: condition; establish relation between mode and file_name
-    if self.mode == 'pro_detail':
+    if self.mode == 'pd':
       key2 = 'link'
       file_name = './unique_pro.csv'
     elif self.mode == 'seller':
@@ -90,7 +91,12 @@ class Flipkart:
     return [pids, links]
   
   def segregate_data_into_chunks(self):
+    # @NOTE: make sure that self.unique_data_size dependency is fullfilled
+    if self.unique_data_size == 0:
+      self.get_unique_values_from_file()
+    
     data_size = self.unique_data_size
+
     chunk=50
     x = math.ceil(data_size/chunk)
 
@@ -105,4 +111,46 @@ class Flipkart:
       chunks_range.append((start, end))  
     
     return chunks_range
-      
+
+  
+  def merge_multiple_sources_into_master(self, info_dict):
+    result = self.get_unique_values_from_file()
+    
+    # For each chunk there is a page with data, name is page is (index+1)
+    chunks_range = self.segregate_data_into_chunks()
+    print (chunks_range)
+    self.set_pages(len(chunks_range))
+
+    prefix = ""
+    master_file_name = ""
+    if self.mode == 'pd':
+      prefix = "proDetail"
+      master_file_name = "unique_pro_details.csv"
+    elif self.mode == 'seller':
+      prefix = "seller"
+      master_file_name = "unique_seller.csv"
+    elif self.mode == 'pro':
+      prefix = "pro"
+      master_file_name = "unique_pro.csv"
+
+    file_names = self.get_value_based_on_pages(prefix, ".csv")
+    print (file_names)
+    
+    primary_key = []
+
+    df = pd.DataFrame(info_dict)
+    
+
+    for file_name in file_names:
+      data = pd.read_csv(file_name)
+
+      for index, row in data.iterrows():
+        key = (row[0], row[1])
+        # row[0] for pid
+        # row[2] for link
+        if key not in primary_key :
+          primary_key.append(key)
+          df.loc[len(df.index)] = row
+    
+    df.to_csv(master_file_name, index=False, encoding='utf-8')
+
