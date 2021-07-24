@@ -1,5 +1,7 @@
 # easy-flipkart-scrap
 
+# scrap should be performed sequentially
+
 # Workflow
 1. collect all the `products listing`
 2. collect all `product details`
@@ -25,12 +27,12 @@ Enter as described in input, in our case enter 10
 ### output
 unique_pro.csv
 
-File contains unique products found from all the product listed on all pages
+File contains unique products found from all the product listed on all pages pro1.csv, pro2.csv......
 
 ## Product details
 1- <ins> def extract_product_details() </ins>
 ### input
-
+internal: unique_pro.csv
 ### output
 proDetail1.csv, proDetail2.csv, proDetail3.csv ......... proDetailX.csv
 
@@ -50,7 +52,6 @@ internal: unique_pro_details.csv
 ###output
 unique_seller.csv
 
-# scrap sequentially
 
 
 
